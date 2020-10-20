@@ -1,0 +1,25 @@
+<?php
+if(empty($_POST['name'])){
+    skip('用户名不得为空','error','register.php','../style/remind.css');
+}
+if(mb_strlen($_POST['name'])>233){
+    skip('用户名长度不得超过233个字符','error','register.php','../style/remind.css');
+}
+if(mb_strlen($_POST['pw'])<6){
+    skip('密码不得少于6位','error','register.php','../style/remind.css');
+}
+if($_POST['pw']!=$_POST['confirm_pw']){
+    skip('两次密码输入不一致','error','register.php','../style/remind.css');
+}
+if(strtolower($_POST['vcode'])!=strtolower($_SESSION['vcode'])){
+    var_dump(strtolower($_POST['vcode']));
+    var_dump(strtolower($_SESSION['vcode']));
+    skip('验证码输入错误','error','register.php','../style/remind.css');
+}
+$_POST=escape($link,$_POST);
+$query="select * from bbs_member where name='{$_POST['name']}'";
+$result=execute($link,$query);
+if(mysqli_num_rows($result)){
+    skip('这个用户名已经被别人注册了','error','register.php');
+}
+?>
