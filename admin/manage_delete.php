@@ -2,6 +2,7 @@
 include_once '../inc/config_inc.php';
 include_once '../inc/mysql_inc.php';
 include_once '../inc/too_inc.php';
+$link = connect();
 
 //验证登录
 include_once 'inc/is_manage_login_inc.php';
@@ -10,8 +11,6 @@ include_once 'inc/is_manage_login_inc.php';
 if (!isset($_GET['id']) or !is_numeric($_GET['id'])) {
     skip("id参数错误", "error", "father_module.php");
 }
-
-$link = connect();
 
 $query = "delete from bbs_manage where id={$_GET['id']}";
 //echo $query;
