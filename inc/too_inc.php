@@ -19,9 +19,24 @@ exit();
 ?>
 
 <?php
+//验证前台用户是否登录
 function isLogin($link){
     if(isset($_COOKIE['member']['name']) && isset($_COOKIE['member']['pw'])){
         $query="select * from bbs_member where name='{$_COOKIE['member']['name']}' and pw='{$_COOKIE['member']['pw']}'";
+        $result=execute($link,$query);
+        if(mysqli_num_rows($result)==1){
+            $data = mysqli_fetch_assoc($result);
+            return $data['id'];
+        }else{
+            return false;
+        }
+    }
+}
+
+//验证后台管理员是否登录
+function is_manage_login($link){
+    if(isset($_SESSION['manage']['name']) && isset($_SESSION['manage']['pw'])){
+        $query="select * from bbs_manage where name='{$_SESSION['manage']['name']}' and pw='{$_SESSION['manage']['pw']}'";
         $result=execute($link,$query);
         if(mysqli_num_rows($result)==1){
             $data = mysqli_fetch_assoc($result);

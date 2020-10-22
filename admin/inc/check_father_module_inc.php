@@ -1,5 +1,4 @@
 <?php
-    $link = connect();
     if(empty($_POST['module_name'])){
         skip("板块名称不得为空", "error", "father_module_add.php");
     }

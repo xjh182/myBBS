@@ -5,6 +5,10 @@ include_once '../inc/too_inc.php';
 $title = '父板块修改页';
 $css = ["style/public.css"];
 $link = connect();
+
+//验证登录
+include_once 'inc/is_manage_login_inc.php';
+
 if(!isset($_GET['id']) or !is_numeric($_GET['id'])){
     skip("id参数错误，请重试","error","father_module.php");
 }

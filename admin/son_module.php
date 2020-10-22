@@ -5,6 +5,10 @@ include_once '../inc/too_inc.php';
 $title = '子版块列表';
 $css = ["style/public.css"];
 $link = connect();
+
+//验证登录
+include_once 'inc/is_manage_login_inc.php';
+
 if(isset($_POST['submit'])){
 	foreach($_POST['sort'] as $key=>$val){
 		if(!is_numeric($key) || !is_numeric($val)){

@@ -22,8 +22,6 @@ $tooStyle="../style/remind.css";
 			管理中心
 		</div>
 		<ul class="nav">
-			<li><a href="http://www.sifangku.com" target="_blank">私房库</a></li>
-			<li><a href="http://www.sifangku.com" target="_blank">私房库</a></li>
 		</ul>
 		<div class="login_info">
 			<a href="#" style="color:#fff;">网站首页</a>&nbsp;|&nbsp;
@@ -36,8 +34,8 @@ $tooStyle="../style/remind.css";
 				<div class="small_title">系统</div>
 				<ul class="child">
 					<li><a class="current" href="#">系统信息</a></li>
-					<li><a href="#">管理员</a></li>
-					<li><a href="#">添加管理员</a></li>
+					<li><a <?php if(basename($_SERVER['SCRIPT_NAME'])=='manage.php'){echo 'class="current"';}?> href="manage.php">管理员</a></li>
+					<li><a <?php if(basename($_SERVER['SCRIPT_NAME'])=='manage_add.php'){echo 'class="current"';}?> href="manage_add.php">添加管理员</a></li>
 					<li><a href="#">站点设置</a></li>
 				</ul>
 			</li>

@@ -2,11 +2,12 @@
 include_once '../inc/config_inc.php';
 include_once '../inc/mysql_inc.php';
 include_once '../inc/too_inc.php';
-$title = '父板块添加页';
-$css = ["style/public.css", "style/father_module_add.css"];
+$link = connect();
+
+//验证登录
+include_once 'inc/is_manage_login_inc.php';
 
 if(isset($_POST['submit'])){
-    $link = connect();
     //验证用户填写的信息
     $check_flag='add';
     include './inc/check_father_module_inc.php';
@@ -19,6 +20,9 @@ if(isset($_POST['submit'])){
         skip("添加失败，请重试", "error", "father_module_add.php");
     }
 }
+
+$title = '父板块添加页';
+$css = ["style/public.css", "style/father_module_add.css"];
 ?>
 <?php include 'inc/header_inc.php' ?>
 <div id="main">

@@ -80,7 +80,7 @@ $page= page($posts,10,5);
                     </div>
                     <p>
                         <?php
-                        if($member=$data_content['member_id']){
+                        if($member==$data_content['member_id']){
                             $url = urlencode("content_delete.php?id={$data_content['id']}"); //编码，传值($_GET已经被解码)
                             $return_url = urlencode($_SERVER['REQUEST_URI']);
                             $message = "你真的要删除 {$data_content['title']} 吗？";
@@ -114,7 +114,13 @@ $page= page($posts,10,5);
                 </dt>
                 <dd class="name"><?php echo $data_user['name'] ?></dd>
                 <dd>帖子总计：<?php echo $posts ?></dd>
-                <dd>操作：<a target="_blank" href="user_photo_update.php">修改头像</a> | <a target="_blank" href="user_photo_update.php?id=<?php echo $member ?>">修改密码</a></dd>
+                <?php
+                if($_GET['id']==$member){
+                ?>
+                <dd>操作：<a target="_blank" href="user_photo_update.php">修改头像</a> | <a target="_blank" href="">修改密码</a></dd>
+                <?php
+                }
+                ?>
             </dl>
             <div style="clear:both;"></div>
         </div>

@@ -11,6 +11,11 @@ if (!$member = isLogin($link)) {
     skip('请登录后再设置头像', 'error', 'login.php');
 }
 
+//用户信息查询
+$query = "select photo from bbs_member where id={$member}";
+$result_user = execute($link,$query);
+$data_user = mysqli_fetch_assoc($result_user);
+
 if(isset($_POST['submit'])){
 	$save_path='userImg'.date('/Y/m/d/');//服务器上文件系统的路径
 	if(isset($_POST['submit'])){
@@ -68,7 +73,7 @@ h2 {
 		<h2>更改头像</h2>
 		<div>
 			<h3>原头像：</h3>
-			<img src="style/photo.jpg" />
+			<img width="180" height="180" src= <?php if($data_user['photo']!=''){echo $data_user['photo'];}else{echo "style/photo.jpg";}?> />
 			<br />
 			最佳图片尺寸：180*180
 		</div>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+
+</html>
+
+<script>
+    var myorder = new Array();
+    function getOrder(start, end) {
+        var length = end - start; 
+        
+        var index = 0;
+        while (index < length + 1) {
+            var flag = true; var num = parseInt(Math.random() * (length + 1));
+            for (var i in myorder) {
+                if (myorder[i] == num) { flag = false; }
+            }
+            if (flag == true) { myorder[index] = num; index++; }
+        }
+        // alert(myorder.length);
+
+        // alert(myorder);
+        console.log(myorder);
+
+        return ;
+    }
+
+    getOrder(1, 48);
+
+    console.log(myorder[0]);
+    
+
+
+
+</script>

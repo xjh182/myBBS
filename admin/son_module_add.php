@@ -5,6 +5,10 @@ include_once '../inc/too_inc.php';
 $title = '子板块添加页';
 $css = ["style/public.css"];
 $link = connect();
+
+//验证登录
+include_once 'inc/is_manage_login_inc.php';
+
 if(isset($_POST['submit'])){
     //验证用户填写的信息
     $check_flag='add';

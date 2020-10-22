@@ -3,8 +3,10 @@ include_once '../inc/config_inc.php';
 include_once '../inc/mysql_inc.php';
 include_once '../inc/too_inc.php';
 $link = connect();
-$title = '父板块列表页';
-$css = ["style/public.css"];
+
+//验证登录
+include_once 'inc/is_manage_login_inc.php';
+
 if(isset($_POST['submit'])){
 	foreach($_POST['sort'] as $key=>$val){
 		if(!is_numeric($key) || !is_numeric($val)){
@@ -18,6 +20,8 @@ if(isset($_POST['submit'])){
 		skip('排序修改失败','error','father_module.php');
 	}
 }
+$title = '父板块列表页';
+$css = ["style/public.css"];
 ?>
 <?php include 'inc/header_inc.php' ?>
 <div id="main">
